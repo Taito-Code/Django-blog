@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>my-blog-index</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <p>まい ぶろぐ とっぷぺーじ</p>
+    <a href="{% url 'new' %}">新規記事の投稿</a>
+    <a href="{% url 'article_all' %}">投稿された記事一覧</a>
 </body>
+
 </html>

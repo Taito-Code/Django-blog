@@ -2,5 +2,9 @@ from django.urls import path
 from . import views
 urlpatterns = [
   path("", views.index.as_view(), name="index"), # クラスベースの場合は as_view
-  path("new/", views.new.as_view(), name="new"), 
+  path("new/",views.new, name="new"),
+  path("article/all/", views.article_all, name="article_all"),
+  path("article/<int:pk>/", views.view_article, name="view_article"),
+  path("article/<int:pk>/edit/", views.edit, name="edit"),
+  path("article/<int:pk>/delete/",views.delete,name="delete"),
 ]

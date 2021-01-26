@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>{{ article.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <p><a href="{% url 'index' %}">トップページへ</a></p>
+    <p><a href="{% url 'article_all' %}">一覧へ戻る</a></p>
+    <h3>{{ article.title }}</h3>
+    <small>投稿日時 : {{ article.posted_at }}</small>
+    <small>最終更新 : {{ article.last_modify }}</small>
+    <p>{{ article.text }}</p>
+</body>
+</html>

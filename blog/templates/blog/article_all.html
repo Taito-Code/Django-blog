@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>article all</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <a href="{% url 'index' %}">トップページへ</a>
+    <h3>投稿された記事一覧</h3>
+    {% for article in articles %}
+    <p>
+        <a href="{% url 'view_article' article.pk %}">{{ article.title }} - {{ article.posted_at }}</a>
+        <a href="{% url 'edit' article.pk %}">編集</a>
+        <a href="{% url 'delete' article.pk %}">削除</a>
+    </p>
+    {% endfor %}
+</body>
+</html>
