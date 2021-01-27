@@ -7,3 +7,8 @@ class Article(models.Model):
     last_modify = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.title
+
+# いいねモデル  
+class Ine(models.Model):  
+    ip_address = models.CharField('IPアドレス', max_length=20)  
+    parent = models.ForeignKey(Article, on_delete=models.CASCADE)

@@ -7,4 +7,5 @@ urlpatterns = [
   path("article/<int:pk>/", views.view_article, name="view_article"),
   path("article/<int:pk>/edit/", views.edit, name="edit"),
   path("article/<int:pk>/delete/",views.delete,name="delete"),
+  path('article/<int:pk>/ine_ajax/', views.add_ine, name='ine'),
 ]
