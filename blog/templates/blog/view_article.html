@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>{{ article.title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+{% extends 'base/base.html' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+{% block js %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             function getCookie(name) {
@@ -52,28 +50,42 @@
             request.send();
         }
     </script>
-</head>
-<body>
-    <p><a href="{% url 'index' %}">トップページへ</a></p>
-    <p><a href="{% url 'article_all' %}">一覧へ戻る</a></p>
-    <h3>{{ article.title }}</h3>
-    <small>投稿日時 : {{ article.posted_at }}</small>
-    <small>最終更新 : {{ article.last_modify }}</small>
-    <p>{{ article.text }}</p>
-    <p><a onclick="api_like()"><span id="like">{{ ine }}</span>いいね！</a></p>
+{% endblock %}
+{% block nav_item %}
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'article_all' %}">一覧へ戻る</a>
+</li>
+{% endblock %}
     
-    <form action="" method="POST">
-        <p><label for="com">コメント</label></p>
-        {% csrf_token %}
-        <textarea name="text" id="com" cols="30" rows="10"></textarea>
-        <button type="submit">投稿</button>
-    </form>
-
-    {% for comment in article.comments.all %}<!-- 記事に対するコメントを全件取得 -->
-        <p>{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
-    {% empty %}
+{% block jumbotron %}
+<h1 class="h3">{{ article.title }}</h1>
+<small>投稿日時 : {{ article.posted_at }}</small>
+<small>最終更新 : {{ article.last_modify }}</small>
+{% endblock %}
+    
+{% block body %}
+<div class="row">
+    <div class="col-12">
+        <p>{{ article.text }}</p>
+    </div>
+    <p><a class="btn btn-primary text-white" onclick="api_like()"><span id="like" class="text-white">{{ ine }}</span>いいね！</a></p>
+</div>
+<form action="" method="POST">
+    <p><label for="com">コメント</label></p>
+    {% csrf_token %}
+    <textarea class="form-control" name="text" id="com" cols="30" rows="10" required></textarea>
+    <p><button class="btn btn-primary" type="submit">投稿</button></p>
+</form>
+    
+{% for comment in article.comments.all %}
+    <div class="card">
+        <div class="card-body">
+            <span>{{ comment.text }}</span>
+            <span>-<small>{{ comment.posted_at }}</small></span>
+        </div>
+    </div>
+{% empty %}
     <p>コメントはありません</p>
-    {% endfor %}
-
-</body>
-</html>
+{% endfor %}
+    
+{% endblock %}

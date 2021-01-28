@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base/base.html' %}<!-- 継承元のファイルを指定 -->
 
-<head>
-    <meta charset="utf-8" />
-    <title>my-blog-index</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+{% block title %}my-blog-index{% endblock %}
 
-<body>
-    <p>まい ぶろぐ とっぷぺーじ</p>
-    <a href="{% url 'new' %}">新規記事の投稿</a>
-    <a href="{% url 'article_all' %}">投稿された記事一覧</a>
-</body>
-
-</html>
+{% block jumbotron %}
+<h1 class="h3">とっぷぺーじ</h1>
+{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-12">
+        <a class="btn btn-dark" href="{% url 'new' %}">新規記事の投稿</a>
+    </div>
+    <div class="col-12">
+        <a class="btn btn-dark" href="{% url 'article_all' %}">投稿された記事一覧</a>
+    </div>
+</div>
+{% endblock %}
