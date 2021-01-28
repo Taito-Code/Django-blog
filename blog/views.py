@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Article, Ine
+from .models import Article, Ine, Comment
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from django.http.response import JsonResponse
@@ -30,6 +30,10 @@ def view_article(request, pk):
 
     except Article.DoesNotExist:
         raise Http404
+    
+    if request.method == "POST":
+        # データベースに投稿されたコメントを保存
+        Comment.objects.create(text=request.POST["text"], article=article) 
     context = {"article":article, "ine":ine}
     return render(request, template_name, context)
 

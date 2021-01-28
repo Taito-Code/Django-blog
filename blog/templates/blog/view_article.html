@@ -62,6 +62,18 @@
     <p>{{ article.text }}</p>
     <p><a onclick="api_like()"><span id="like">{{ ine }}</span>いいね！</a></p>
     
+    <form action="" method="POST">
+        <p><label for="com">コメント</label></p>
+        {% csrf_token %}
+        <textarea name="text" id="com" cols="30" rows="10"></textarea>
+        <button type="submit">投稿</button>
+    </form>
+
+    {% for comment in article.comments.all %}<!-- 記事に対するコメントを全件取得 -->
+        <p>{{ comment.text }}<br><small>{{ comment.posted_at }}</small></p>
+    {% empty %}
+    <p>コメントはありません</p>
+    {% endfor %}
 
 </body>
 </html>
