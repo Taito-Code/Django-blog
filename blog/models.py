@@ -10,5 +10,5 @@ class Article(models.Model):
 
 # いいねモデル  
 class Ine(models.Model):  
-    ip_address = models.CharField('IPアドレス', max_length=20)  
+    ip_address = models.CharField('IPアドレス', max_length=20)
     parent = models.ForeignKey(Article, on_delete=models.CASCADE)

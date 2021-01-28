@@ -25,11 +25,8 @@ def view_article(request, pk):
     template_name = "blog/view_article.html"
     try:
         article = Article.objects.get(pk=pk)
-
-        #JSON 下のurlにアクセスして読み込み(pkで各記事毎にいいね数取得)
-        url = "http://localhost:8000/article/{}/ine_ajax/".format(pk)
-        res = urllib.request.urlopen(url)
-        ine = json.loads(res.read().decode('utf-8'))
+        post = get_object_or_404(Article, pk=pk)
+        ine = Ine.objects.filter(parent=post).count()
 
     except Article.DoesNotExist:
         raise Http404
