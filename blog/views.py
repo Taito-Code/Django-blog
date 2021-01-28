@@ -57,16 +57,19 @@ def delete(request, pk):
 
 def add_ine(request, pk):
     
-    post = get_object_or_404(Article, pk=pk)
-    ip_address = get_client_ip(request)
+    post = get_object_or_404(Article, pk=pk) #Articleの受け取り
+    ip_address = get_client_ip(request) #IPアドレスをget_client_ip()で取得
     ips = [ine.ip_address for ine in Ine.objects.filter(parent=post).all()]
 
+    #IPアドレスが未登録の場合はDBに登録
     if ip_address in ips:
         msg = '登録済みです'
     else:
         ine = Ine.objects.create(ip_address=ip_address, parent=post)
         ine.save()
         msg = '登録しました'
+
+    #Json形式にして格納
     d = {
         'count': Ine.objects.filter(parent=post).count(),
         'msg': msg,
