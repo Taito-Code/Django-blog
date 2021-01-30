@@ -133,3 +133,6 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
     'markdown.extensions.tables',    # テーブル
     'markdown.extensions.nl2br',    # 改行
 ]
+
+""" 600, 600 ぐらいの画像まではリサイズさせない """
+MARKDOWNX_IMAGE_MAX_SIZE = {'size': (600, 600), 'quality': 100}

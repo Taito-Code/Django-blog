@@ -6,7 +6,22 @@
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    {% block css %}{% endblock %}
+    {% block css %}
+    <style>
+        /* テーブル*/
+        .markdownx table {
+            border-collapse: collapse;
+        }
+        /* テーブル*/
+        .markdownx th,td {
+            border: solid 2px;
+        }
+        /* このブロックの枠を制限*/
+        .detail_field {
+            margin-right: 70%;
+        }
+    </style>
+    {% endblock %}
     {% block js %}{% endblock %}
 </head>
 <body>
