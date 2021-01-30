@@ -5,6 +5,7 @@ from django.http import Http404
 from django.http.response import JsonResponse
 import json 
 import urllib.request
+from .forms import ArticleForm
 
 class index(TemplateView):
     template_name = "blog/index.html" 
@@ -12,9 +13,15 @@ class index(TemplateView):
 def new(request):
     template_name = "blog/new.html"
     if request.method == "POST":
-        article = Article.objects.create(title = request.POST["title"], text = request.POST["text"])
-        return redirect(view_article, article.pk)
-    return render(request, template_name)
+        form = ArticleForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect(article_all)
+
+    else:
+        form = ArticleForm
+    return render(request, template_name, {'form': form })
 
 def article_all(request):
     template_name = "blog/article_all.html"

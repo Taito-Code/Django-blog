@@ -1,14 +1,20 @@
 from django.db import models
 from django.utils import timezone
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
+from django.utils.safestring import mark_safe
 
 #記事モデル
 class Article(models.Model):
     title = models.CharField(max_length=128)
-    text = models.TextField()
+    text = MarkdownxField('Contents', help_text='To Write with Markdown format')
     posted_at = models.DateTimeField(auto_now_add=True)
     last_modify = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.title
+
+    def get_text_markdownx(self):
+        return mark_safe(markdownify(self.text))
 
 #いいねモデル  
 class Ine(models.Model):  
