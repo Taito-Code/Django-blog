@@ -6,12 +6,14 @@ from django.http.response import JsonResponse
 import json 
 import urllib.request
 from .forms import ArticleForm
+from django.contrib.auth.decorators import login_required
 
 #index表示
 class index(TemplateView):
     template_name = "blog/index.html" 
 
 #新規作成
+@login_required
 def new(request):
     template_name = "blog/new.html"
     if request.method == "POST":
@@ -26,6 +28,7 @@ def new(request):
     return render(request, template_name, {'form': form })
 
 #記事一覧
+@login_required
 def article_all(request):
     template_name = "blog/article_all.html"
     context = {"articles":Article.objects.all()}
@@ -49,6 +52,7 @@ def view_article(request, pk):
     return render(request, template_name, context)
 
 #編集ページ
+@login_required
 def edit(request,pk):
     template_name = "blog/edit.html"
     try:
@@ -64,6 +68,7 @@ def edit(request,pk):
     return render(request, template_name, context)
 
 #記事削除
+@login_required
 def delete(request, pk):
     try:
         article = Article.objects.get(pk=pk)

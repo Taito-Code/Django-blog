@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'markdownx',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,7 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 
 """ 600, 600 ぐらいの画像まではリサイズさせない """
 MARKDOWNX_IMAGE_MAX_SIZE = {'size': (600, 600), 'quality': 100}
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'
