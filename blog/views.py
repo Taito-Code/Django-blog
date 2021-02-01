@@ -40,7 +40,9 @@ def view_article(request, pk):
     try:
         article = Article.objects.get(pk=pk)
         post = get_object_or_404(Article, pk=pk)
+        post.pv += 1
         ine = Ine.objects.filter(parent=post).count()
+        post.save()
 
     except Article.DoesNotExist:
         raise Http404

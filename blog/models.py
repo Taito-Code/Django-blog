@@ -10,6 +10,7 @@ class Article(models.Model):
     text = MarkdownxField('Contents', help_text='To Write with Markdown format')
     posted_at = models.DateTimeField(auto_now_add=True)
     last_modify = models.DateTimeField(auto_now=True)
+    pv = models.PositiveIntegerField(default=0)
     def __str__(self):
         return self.title
 

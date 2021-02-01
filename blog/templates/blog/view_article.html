@@ -2,6 +2,22 @@
 
 {% block title %}{{ article.title }}{% endblock %}
 
+{% block css %}
+<style>
+    ul, ol {
+        color: #598987; 
+        border: double 5px #598987;/*二重線 太さ 色*/
+        background: #f1f8ff; 
+        padding: 0.5em 0.5em 0.5em 2em;
+      }
+      
+      ul li, ol li {
+        line-height: 1.5;
+        padding: 0.5em 0;
+      }
+</style>
+{% endblock %}
+
 {% block js %}
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
@@ -58,17 +74,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
-
-{% block nav_item %}
-<li class="nav-item">
-    <a class="nav-link" href="{% url 'article_all' %}">一覧へ戻る</a>
-</li>
-{% endblock %}
     
 {% block jumbotron %}
 <h1 class="h3">{{ article.title }}</h1>
 <small>投稿日時 : {{ article.posted_at }}</small>
 <small>最終更新 : {{ article.last_modify }}</small>
+<small>閲覧された回数：{{ article.pv }} </small>
 {% endblock %}
     
 {% block body %}
