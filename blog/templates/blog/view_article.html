@@ -1,9 +1,11 @@
 {% extends 'base/base.html' %}
 
 {% block title %}{{ article.title }}{% endblock %}
+
 {% block js %}
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script>
+        /* POSTする際のcsrf対策 */
         $(document).ready(function () {
             function getCookie(name) {
             var cookieValue = null;
@@ -34,8 +36,8 @@
                 }
             });
         });
-        //ここまでおまじないと思って記述
-        //以下Ajax
+        
+        /* api_like関数 */
         function api_like() {
             var api_url = "{% url 'ine' pk=article.pk %}";
             var btn = document.getElementById("like");
@@ -50,11 +52,13 @@
             request.send();
         }
     </script>
+
     <!-- highlight.js関連の読み込み -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
+
 {% block nav_item %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'article_all' %}">一覧へ戻る</a>
@@ -72,15 +76,20 @@
     <div class="col-12">
         <p>{{ article.get_text_markdownx | safe }}</p>
     </div>
-    <p><a class="btn btn-primary text-white" onclick="api_like()"><span id="like" class="text-white">{{ ine }}</span>いいね！</a></p>
+    <hr>
+    <b>この記事が良いと思った方はいいね！よろしくお願いします！</b>
+    <p><a class="btn btn-danger text-white" onclick="api_like()">(<span id="like" class="text-white">{{ ine }}</span>) いいね！</a></p>
 </div>
+
+<hr>
+
 <form action="" method="POST">
-    <p><label for="com">コメント</label></p>
+    <b><label for="com">新しくコメントをする</label></b>
     {% csrf_token %}
     <textarea class="form-control" name="text" id="com" cols="30" rows="10" required></textarea>
     <p><button class="btn btn-primary" type="submit">投稿</button></p>
 </form>
-    
+<b>コメント一覧</b>
 {% for comment in article.comments.all %}
     <div class="card">
         <div class="card-body">

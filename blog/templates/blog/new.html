@@ -3,6 +3,7 @@
 {% block title %}my-blog-new{% endblock %}
 {% block css %}
 <style>
+    /* 新規記事投稿ページのtextareaのCSS */
     input{
         width: 50%;
     }
@@ -19,7 +20,7 @@
 <h1 class="h3">新規記事の投稿ページ</h1>
 {% endblock %}
 
-{% block new %}
+{% block body %}
 <form action="{% url 'new' %}" method="post">
     {% csrf_token %}
     {% for field in form %}
@@ -30,11 +31,11 @@
     {% endfor %}
     <p><button class="btn btn-primary" type="submit">投稿</button></p>
 </form>
+
 <!-- highlight.js関連の読み込み -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/dracula.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 <script>
-
 const elements = document.getElementsByClassName('markdownx');
 for (element of elements) {
     element.addEventListener('markdownx.update', event => {

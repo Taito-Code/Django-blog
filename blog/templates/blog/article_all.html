@@ -1,6 +1,6 @@
 {% extends 'base/base.html' %}
 
-{% block title %}article all{% endblock %}
+{% block title %}Article all{% endblock %}
 
 {% block jumbotron %}
 <h1 class="h3">投稿された記事一覧</h1>
@@ -19,10 +19,10 @@
                     <div class="col-12">
                         <small>[{{ article.posted_at }}]</small>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         <a class="text-primary" href="{% url 'edit' article.pk %}">編集</a>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         <a class="text-danger" href="{% url 'delete' article.pk %}">削除</a>
                     </div>
                 </div>
