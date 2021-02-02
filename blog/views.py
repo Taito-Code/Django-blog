@@ -36,6 +36,11 @@ def contact(request):
     template_name = "blog/contact.html"
     return render(request, template_name)
 
+#privacypolicyを表示
+def privacypolicy(request):
+    template_name = "blog/privacypolicy.html"
+    return render(request, template_name)
+
 #新規作成
 @login_required
 def new(request):

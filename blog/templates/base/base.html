@@ -74,6 +74,20 @@
           background: #d3d3d3;
           border-radius: 5px;/*角の丸み*/
        }
+
+       .footer_top{
+         background-color: #598987;
+         text-align: center;
+       }
+
+       a {
+        color: white;
+        text-decoration:none;
+       }
+
+       a:hover {
+         color:#B0E0E6	;
+       }
     </style>
 
     {% block css %}
@@ -110,15 +124,20 @@
 
     <footer class="bg-light text-center text-lg-start">
 
-        <div class="sns-icon">
-            
+        <div class="footer_top">
+          <a class="privacypolicy" href="{% url 'privacypolicy' %} ">プライバシーポリシー</a>
         </div>
+        
 
         <div class="copyright">
         <div class="text-center p-3" style="background-color: #598987; color: white;">
           © 2021 Copyright Taito All Rights Reserved.
         </div>
         </div>
+
+        
+        
+        
        
     </footer>
     
