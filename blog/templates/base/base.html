@@ -90,6 +90,10 @@
        a:hover {
          color:#B0E0E6	;
        }
+
+       body {
+         padding-top:120px;
+       }
     </style>
 
     {% block css %}
@@ -98,6 +102,7 @@
     {% block js %}{% endblock %}
 </head>
 <body>
+    <div class="fixed-top">
     <nav class="navbar navbar-expand-md navbar-dark " style="background-color:#598987;">
         <div class="container-fluid">
           <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/taitologo_green_white.jpg' %}" width="110px"></a>
@@ -115,6 +120,7 @@
           </div>
         </div>
       </nav>
+    </div>
 
     <div class="container">
         <div class="jumbotron">
@@ -125,22 +131,14 @@
     </div>
 
     <footer class="bg-light text-center text-lg-start">
-
         <div class="footer_top">
           <a class="privacypolicy" href="{% url 'privacypolicy' %} ">プライバシーポリシー</a>
         </div>
-        
-
         <div class="copyright">
         <div class="text-center p-3" style="background-color: #598987; color: white;">
           © 2021 Copyright Taito All Rights Reserved.
         </div>
         </div>
-
-        
-        
-        
-       
     </footer>
     
     <!-- bootstrapでのCDN -->
