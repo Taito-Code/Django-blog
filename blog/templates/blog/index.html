@@ -1,19 +1,49 @@
 {% extends 'base/base.html' %}
 
-{% block title %}my-blog-index{% endblock %}
+{% block title %}Article all{% endblock %}
+
+{% block css %}
+<style>
+        a{
+            font-size: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 5px 10px black;
+            transform: translate(0, -5px);
+        }
+</style>
+{% endblock %}
 
 {% block jumbotron %}
-<h1 class="h3">Top Page</h1>
+<h1 class="h3">My All Blogs</h1>
 {% endblock %}
 
 {% block body %}
 <div class="row">
-    <div class="col-12">
-        <a class="btn btn-success" href="{% url 'new' %}">新規記事の投稿</a>
+    {% for article in articles %}
+    <div class="col-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <a class="text-primary stretched-link" href="{% url 'view_article' article.pk %}">{{ article.title }}</a>
+                    </div>
+                    <div class="col-12">
+                        <b>[{{ article.posted_at }}]</b>
+                    </div>
+                    <div class="col-12">
+                        <b>{{ article.pv }} views</b>
+                    </div>
+                    <div class="col-12">
+                        {% for tag in article.tags.all %}
+                        <b class="tags">{{ tag }}</b>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <div class="col-12">
-        <a class="btn btn-success" href="{% url 'article_all' %}">投稿された記事一覧</a>
-    </div>
+    {% endfor %}
 </div>
 {% endblock %}

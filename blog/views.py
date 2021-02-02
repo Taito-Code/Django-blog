@@ -9,8 +9,10 @@ from .forms import ArticleForm
 from django.contrib.auth.decorators import login_required
 
 #index表示
-class index(TemplateView):
-    template_name = "blog/index.html" 
+def index(request):
+    template_name = "blog/index.html"
+    context = {"articles":Article.objects.all()}
+    return render(request, template_name, context)
 
 #新規作成
 @login_required
