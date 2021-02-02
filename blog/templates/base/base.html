@@ -27,6 +27,46 @@
         footer {
             padding-top:10%;
         }
+
+        #navbutton1 {
+          background-color: #598987;
+          color: #fff;
+        }
+        #navbutton1:hover {
+          background-color: #1f534d;
+        }
+
+        #navbutton2 {
+          background-color: #598987;
+          color: #fff;
+        }
+        #navbutton2:hover {
+          background-color: #1f534d;
+        }
+
+        #navbutton3 {
+          background-color: #598987;
+          color: #fff;
+        }
+        #navbutton3:hover {
+          background-color: #1f534d;
+        }
+
+        #navbutton4 {
+          background-color: #598987;
+          color: #fff;
+        }
+        #navbutton4:hover {
+          background-color: #1f534d;
+        }
+
+        #navbutton5 {
+          background-color: #598987;
+          color: #fff;
+        }
+        #navbutton5:hover {
+          background-color: #1f534d;
+        }
     </style>
 
     {% block css %}
@@ -37,17 +77,17 @@
 <body>
     <nav class="navbar navbar-expand-md navbar-dark " style="background-color:#598987;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/taitologo.jpg' %}" width="100px"></a>
+          <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/taitologo_green_white.jpg' %}" width="110px"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-              <a class="nav-link active" href="#">Technology-blog</a>
-              <a class="nav-link active" href="#">Daily-blog</a>
-              <a class="nav-link active" href="#">About</a>
-              <a class="nav-link active" href="#">Contact</a>
+              <a  id="navbutton1" class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+              <a  id="navbutton2" class="nav-link active" href="#">Technology-blog</a>
+              <a  id="navbutton3" class="nav-link active" href="#">Daily-blog</a>
+              <a  id="navbutton4" class="nav-link active" href="#">About</a>
+              <a  id="navbutton5" class="nav-link active" href="#">Contact</a>
             </div>
           </div>
         </div>
