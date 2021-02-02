@@ -11,8 +11,30 @@ from django.contrib.auth.decorators import login_required
 #index表示
 def index(request):
     template_name = "blog/index.html"
-    context = {"articles":Article.objects.all()}
+    context = {"articles":Article.objects.all().order_by('-posted_at')}
     return render(request, template_name, context)
+
+#technology-blogのみ表示
+def tech_all(request):
+    template_name = "blog/article_tech.html"
+    context = {"articles":Article.objects.filter(tags__name__in=["Technology",]).order_by('-posted_at')}
+    return render(request, template_name, context)
+
+#daily-blogのみ表示
+def life_all(request):
+    template_name = "blog/article_life.html"
+    context = {"articles":Article.objects.filter(tags__name__in=["Life",]).order_by('-posted_at')}
+    return render(request, template_name, context)
+
+#aboutページを表示
+def about(request):
+    template_name = "blog/about.html"
+    return render(request, template_name)
+
+#contactページを表示
+def contact(request):
+    template_name = "blog/contact.html"
+    return render(request, template_name)
 
 #新規作成
 @login_required
@@ -29,11 +51,11 @@ def new(request):
         form = ArticleForm
     return render(request, template_name, {'form': form })
 
-#記事一覧
+#管理者ページ
 @login_required
 def article_all(request):
     template_name = "blog/article_all.html"
-    context = {"articles":Article.objects.filter(tags__name__in=["python",])}
+    context = {"articles":Article.objects.all()}
     return render(request, template_name, context)
 
 #記事を閲覧

@@ -82,9 +82,9 @@
 {% block jumbotron %}
 <small>投稿日時 : {{ article.posted_at }}</small>
 <small>最終更新 : {{ article.last_modify }}</small><br>
-<h1 class="h3">{{ article.title }}</h1>
+<h1>{{ article.title }}</h1>
 {% for tag in article.tags.all %}
-    <big class="tags">{{ tag }}</big>
+    <small class="tags">{{ tag }}</small>
 {% endfor %}
 <br>
 <small>閲覧された回数：{{ article.pv }} </small>
