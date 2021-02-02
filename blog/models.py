@@ -3,6 +3,7 @@ from django.utils import timezone
 from markdownx.models import MarkdownxField
 from markdownx.utils import markdownify
 from django.utils.safestring import mark_safe
+from taggit.managers import TaggableManager
 
 #記事モデル
 class Article(models.Model):
@@ -11,6 +12,7 @@ class Article(models.Model):
     posted_at = models.DateTimeField(auto_now_add=True)
     last_modify = models.DateTimeField(auto_now=True)
     pv = models.PositiveIntegerField(default=0)
+    tags = TaggableManager(blank=True)
     def __str__(self):
         return self.title
 

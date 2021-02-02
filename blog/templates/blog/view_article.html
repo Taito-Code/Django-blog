@@ -80,9 +80,13 @@
 {% endblock %}
     
 {% block jumbotron %}
-<h1 class="h3">{{ article.title }}</h1>
 <small>投稿日時 : {{ article.posted_at }}</small>
 <small>最終更新 : {{ article.last_modify }}</small><br>
+<h1 class="h3">{{ article.title }}</h1>
+{% for tag in article.tags.all %}
+    <big class="tags">{{ tag }}</big>
+{% endfor %}
+<br>
 <small>閲覧された回数：{{ article.pv }} </small>
 {% endblock %}
     

@@ -31,7 +31,7 @@ def new(request):
 @login_required
 def article_all(request):
     template_name = "blog/article_all.html"
-    context = {"articles":Article.objects.all()}
+    context = {"articles":Article.objects.filter(tags__name__in=["python",])}
     return render(request, template_name, context)
 
 #記事を閲覧
