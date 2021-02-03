@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+
+{% block css %}
+<style>
+    p {
+        font-family: "Roboto Condensed", "Noto Sans JP", sans-serif;
+    }
+
+    .aboutsite{
+        padding: 0.5em 1em;
+        margin: 1em 0;
+        background: #f4f4f4;
+        border-left: solid 6px #5bb7ae;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    }
+
+    .aboutowner{
+        padding: 0.5em 1em;
+        margin: 1em 0;
+        background: #f4f4f4;
+        border-left: solid 6px #5bb7ae;
+        box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+    }
+
+    .aboutowner img{
+       text-align: left;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="aboutsite">
+    <h2>About Site</h2>
+    <p>本サイトは、技術系(プログラミング)や日常系(趣味についてなど)を掲載するブログアプリです。随時追加機能も搭載する予定なので応援していただけると幸いです！<br>
+    主に技術系では、新しく学んだことのアウトプットや学んだことを分かりやすいように伝える記事を書いていきます。<br>
+    日常系では、趣味や日々のつぶやきなどを投稿していこうと思います。愛犬が登場するかも...？</p>
+</div>
+    
+<div class="aboutowner">    
+<h2>About Owner</h2>
+<img src="{% static 'img/taitologo.jpg' %}" class="img-fluid rounded mx-auto" alt="Responsive image" width="40%">
+<ul>
+    <li>名前：Taito</li>
+    <li>趣味：プログラミング/買い物/ファッション/サッカー/ゴルフ/釣り/カフェ巡りetc...</li>
+    <li>プログラミングスキル：Python, C, C#(Unityを学ぶ際に触った), HTML, CSS</li>
+</ul>
+<p>現役の情報系大学生です。主にPythonでWebアプリケーション開発をしています。大学では、コンピュータサイエンスやIoTなどの組込みシステムを勉強中。残りの大学生活ではJavaでのAndroidアプリの開発、ソフトウェア開発。Ocamlを学習予定。
+    現在は独学でPythonを用いた機械学習を独学中。Flutterを用いたクロスプラットフォームに対応したアプリケーション開発も学習したいと考えています。
+</p>
+</div>
+
+{% endblock %}
