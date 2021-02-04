@@ -127,7 +127,7 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media/markdownx/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 """ マークダウンのオプション設定 """
@@ -148,4 +148,3 @@ LOGOUT_REDIRECT_URL = 'index'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
