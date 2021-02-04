@@ -24,7 +24,7 @@ urlpatterns = [
     path('', include("blog.urls")),
     path('markdownx/', include('markdownx.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}), 
+    path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}), 
 ]
 
 # 開発環境でのメディアファイルの配信設定
