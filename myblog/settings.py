@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'uvxhjqnmbd67=dg$%=7)##bg*uhh=n7nfdbl)*jd6i&=le8g(h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
@@ -139,7 +139,7 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 ]
 
 """ 600, 600 ぐらいの画像まではリサイズさせない """
-MARKDOWNX_IMAGE_MAX_SIZE = {'size': (600, 600), 'quality': 100}
+MARKDOWNX_IMAGE_MAX_SIZE = {'size': (500, 500), 'quality': 100}
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
