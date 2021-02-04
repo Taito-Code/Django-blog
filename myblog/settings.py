@@ -127,8 +127,8 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-MEDIA_URL = '/media/markdownx/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/markdownx')
 
 """ マークダウンのオプション設定 """
 MARKDOWNX_MARKDOWN_EXTENSIONS = [
