@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.static import serve  #追加
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("blog.urls")),
-    path('markdownx/', include(('markdownx.urls', 'markdownx'))),
+    path('markdownx/', include('markdownx.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}), 
 ]
 
 # 開発環境でのメディアファイルの配信設定
