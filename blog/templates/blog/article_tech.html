@@ -27,7 +27,10 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <a class="text-primary stretched-link" href="{% url 'view_article' article.pk %}">{{ article.title }}</a>
+                        <a class="text-primary stretched-link" href="{% url 'view_article' article.pk %}"></a>
+                    </div>
+                    <div class="col-12">
+                        <h3>{{ article.title }}</h3>
                     </div>
                     <div class="col-12">
                         <small>[{{ article.posted_at }}]</small>

@@ -15,9 +15,7 @@
 </style>
 {% endblock %}
 
-{% block jumbotron %}
-<h1 class="h3">My All Blogs</h1>
-{% endblock %}
+
 
 {% block body %}
 <div class="row">
@@ -30,7 +28,7 @@
                         <a class="text-primary stretched-link" href="{% url 'view_article' article.pk %}"></a>
                     </div>
                     <div class="col-12">
-                        {{ article.title }}
+                        <h3>{{ article.title }}</h3>
                     </div>
                     <div class="col-12">
                         <small>[{{ article.posted_at }}]</small>
